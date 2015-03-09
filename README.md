@@ -9,7 +9,7 @@ These commands can detect untranslated and invalid keys.
 ## Installation
 
 ```bash
-composer require robinfranssen/analyzelocale
+composer require robinfranssen/analyzelocale --dev
 ```
 
 Add the service provider:

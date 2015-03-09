@@ -1,0 +1,23 @@
+{
+    "name": "robinfranssen/analyzelocale",
+    "description": "This scans your laravel project for used locale keys that aren't translated by your locale files.",
+    "keywords": ["artisan", "command", "analyze", "translation", "locale"],
+    "type": "library",
+    "homepage": "https://github.com/aXent/laravel-analyze-locale",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Robin Franssen",
+            "email": "robin@dev-it.be",
+            "homepage": "http://www.dev-it.be"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "RobinFranssen\\AnalyzeLocale\\": "src/"
+        }
+    }
+}

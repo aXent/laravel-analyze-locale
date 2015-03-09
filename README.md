@@ -9,7 +9,7 @@ These commands can detect untranslated and invalid keys.
 ## Installation
 
 ```bash
-composer require robinfranssen/laravel-analyze-locale
+composer require robinfranssen/analyzelocale
 ```
 
 Add the service provider:

@@ -219,10 +219,6 @@ class AnalyzeLocale extends Command {
 
         foreach ($keys as $key => $file)
         {
-            //preg_match("/(?P<package>(.*)(?:(?=::)))?(?:\\:\\:)?(?P<file>.*)\\.(?P<key>.*)/uim", $key, $langkey);
-            //$all[$langkey['package']][$langkey['file']][] = $langkey['key'];
-
-            //Used the parsekey from the laravel framework instead of parsing the keys through preg_match.
             list($namespace, $group, $item) = \Lang::parseKey($key);
             $all[$namespace][$group][] = $item;
         }

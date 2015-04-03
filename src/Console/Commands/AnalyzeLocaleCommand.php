@@ -219,9 +219,14 @@ class AnalyzeLocale extends Command {
 
         foreach ($keys as $key => $file)
         {
-            preg_match("/(?P<package>(.*)(?:(?=::)))?(?:\\:\\:)?(?P<file>.*)\\.(?P<key>.*)/uim", $key, $langkey);
-            $all[$langkey['package']][$langkey['file']][] = $langkey['key'];
+            //preg_match("/(?P<package>(.*)(?:(?=::)))?(?:\\:\\:)?(?P<file>.*)\\.(?P<key>.*)/uim", $key, $langkey);
+            //$all[$langkey['package']][$langkey['file']][] = $langkey['key'];
+
+            //Used the parsekey from the laravel framework instead of parsing the keys through preg_match.
+            list($namespace, $group, $item) = \Lang::parseKey($key);
+            $all[$namespace][$group][] = $item;
         }
+
 
         ksort($all);
 
@@ -303,7 +308,7 @@ class AnalyzeLocale extends Command {
         $table->setHeaders([
             'Package',
             'File',
-            'Key',
+            'Item',
             'Full key',
         ]);
 
@@ -313,13 +318,14 @@ class AnalyzeLocale extends Command {
 
             foreach ($package as $file => $keys)
             {
-                $row[0] = (!empty($packageName)) ? $packageName : '<comment>No package</comment>';
+                $isPackage = (!empty($packageName) && $packageName != "*");
+                $row[0] =  $isPackage ? $packageName : '<comment>No package</comment>';
                 $row[1] = $file;
 
                 foreach ($keys as $key)
                 {
                     $row[2] = $key;
-                    $row[3] = sprintf('%s%s.%s', (!empty($packageName) ? $packageName.'::': ''), $file, $key);
+                    $row[3] = sprintf('%s%s.%s', ($isPackage ? $packageName.'::': ''), $file, $key);
 
                     $table->addRow($row);
                 }
@@ -342,8 +348,8 @@ class AnalyzeLocale extends Command {
         $table = new Table($this->output);
         $table->setHeaders([
             'Key',
-            'Translated key',
-            'Invalid key',
+            'Translated item',
+            'Invalid item',
             'File',
         ]);
 

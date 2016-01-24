@@ -4,7 +4,7 @@ namespace RobinFranssen\AnalyzeLocale\Console\Commands;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 
-class Untranslated extends Command {
+class UntranslatedCommand extends Command {
 
 	/**
 	 * The console command name.

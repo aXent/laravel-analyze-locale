@@ -5,7 +5,7 @@ use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
-class AllKeys extends Command {
+class AllKeysCommand extends Command {
 
     /**
      * The console command name.

@@ -6,7 +6,7 @@ use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
-class AnalyzeLocale extends Command {
+class AnalyzeLocaleCommand extends Command {
 
 	/**
 	 * The console command name.

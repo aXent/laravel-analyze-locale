@@ -1,10 +1,10 @@
 <?php
 namespace RobinFranssen\AnalyzeLocale\Providers;
 
-use RobinFranssen\AnalyzeLocale\Console\Commands\AllKeys;
-use RobinFranssen\AnalyzeLocale\Console\Commands\AnalyzeLocale;
-use RobinFranssen\AnalyzeLocale\Console\Commands\Invalid;
-use RobinFranssen\AnalyzeLocale\Console\Commands\Untranslated;
+use RobinFranssen\AnalyzeLocale\Console\Commands\AllKeysCommand;
+use RobinFranssen\AnalyzeLocale\Console\Commands\AnalyzeLocaleCommand;
+use RobinFranssen\AnalyzeLocale\Console\Commands\InvalidCommand;
+use RobinFranssen\AnalyzeLocale\Console\Commands\UntranslatedCommand;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
@@ -12,25 +12,25 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     {
         $this->app['command.locale.scan'] = $this->app->share(
             function () {
-                return new AnalyzeLocale;
+                return new AnalyzeLocaleCommand();
             }
         );
 
         $this->app['command.locale.allkeys'] = $this->app->share(
             function () {
-                return new AllKeys();
+                return new AllKeysCommand();
             }
         );
 
         $this->app['command.locale.untranslated'] = $this->app->share(
             function () {
-                return new Untranslated();
+                return new UntranslatedCommand();
             }
         );
 
         $this->app['command.locale.invalid'] = $this->app->share(
             function () {
-                return new Invalid();
+                return new InvalidCommand();
             }
         );
 

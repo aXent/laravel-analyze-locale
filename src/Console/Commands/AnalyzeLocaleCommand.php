@@ -3,6 +3,7 @@ namespace RobinFranssen\AnalyzeLocale\Console\Commands;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Helper\Table;
+use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
@@ -27,12 +28,6 @@ class AnalyzeLocaleCommand extends Command {
      * @var array Available options.
      */
     protected $availableOptions = ['all', 'allkeys', 'untranslated', 'invalid'];
-
-    /**
-     * @var \Symfony\Component\Console\Helper\ProgressHelper
-     */
-    protected $progressBar;
-
 
     /**
      * @var
@@ -172,13 +167,12 @@ class AnalyzeLocaleCommand extends Command {
      */
     private function findTranslationKeysInFiles()
     {
-        $this->progressBar = $this->getHelperSet()->get('progress');
-        $this->progressBar->start($this->output, iterator_count($this->phpFiles));
+        $this->output->progressStart(iterator_count($this->phpFiles));
 
         $all = [];
 
         foreach ($this->phpFiles as $file => $a) {
-            $this->progressBar->advance();
+            $this->output->progressAdvance();
 
             $keys = [];
             $matches = [];
@@ -204,7 +198,7 @@ class AnalyzeLocaleCommand extends Command {
 
         $this->all = $all; //Only unique values.
 
-        $this->progressBar->finish();
+        $this->output->progressFinish();
     }
 
     /**

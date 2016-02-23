@@ -1,7 +1,7 @@
 # Translation helpers for Laravel 5
 -----
 
-** NOTE: As of laravel 5.2.20 you need version ^0.1.4 for versions below laravel 5.2.20 you need version 0.1.3 of this package. **
+**NOTE: As of laravel 5.2.20 you need version ^0.1.4. For versions below laravel 5.2.20 you need version 0.1.3 of this package.**
 
 -----
 This package provides you with commands to analyze the translation keys used in your Laravel 5 application.

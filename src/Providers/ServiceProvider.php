@@ -10,29 +10,21 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
     public function register()
     {
-        $this->app['command.locale.scan'] = $this->app->share(
-            function () {
-                return new AnalyzeLocaleCommand();
-            }
-        );
+        $this->app->singleton('command.locale.scan', function () {
+            return new AnalyzeLocaleCommand();
+        });
 
-        $this->app['command.locale.allkeys'] = $this->app->share(
-            function () {
-                return new AllKeysCommand();
-            }
-        );
+        $this->app->singleton('command.locale.allkeys', function () {
+            return new AllKeysCommand();
+        });
 
-        $this->app['command.locale.untranslated'] = $this->app->share(
-            function () {
-                return new UntranslatedCommand();
-            }
-        );
+        $this->app->singleton('command.locale.untranslated', function () {
+            return new UntranslatedCommand();
+        });
 
-        $this->app['command.locale.invalid'] = $this->app->share(
-            function () {
-                return new InvalidCommand();
-            }
-        );
+        $this->app->singleton('command.locale.invalid', function () {
+            return new InvalidCommand();
+        });
 
         $this->commands([
             'command.locale.scan',

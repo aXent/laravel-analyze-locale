@@ -36,7 +36,7 @@ class InvalidCommand extends Command {
 	 *
 	 * @return mixed
 	 */
-	public function fire()
+	public function handle()
 	{
         $this->call('locale:scan',
             ['--show' => ['invalid'], '--locale' => $this->option('locale')]);

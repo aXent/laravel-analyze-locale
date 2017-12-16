@@ -36,7 +36,7 @@ class AllKeysCommand extends Command {
      *
      * @return mixed
      */
-    public function fire()
+    public function handle()
     {
         $this->call('locale:scan',
             ['--show' => ['allkeys'], '--locale' => $this->option('locale')]);

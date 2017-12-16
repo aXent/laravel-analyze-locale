@@ -70,7 +70,7 @@ class AnalyzeLocaleCommand extends Command {
 	 *
 	 * @return mixed
 	 */
-	public function fire()
+	public function handle()
 	{
         //Validate --show= option values.
         foreach($this->option('show') as $option) {

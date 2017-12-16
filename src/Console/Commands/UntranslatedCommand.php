@@ -35,7 +35,7 @@ class UntranslatedCommand extends Command {
 	 *
 	 * @return mixed
 	 */
-	public function fire()
+	public function handle()
 	{
         $this->call('locale:scan',
             ['--show' => ['untranslated'], '--locale' => $this->option('locale')]);
